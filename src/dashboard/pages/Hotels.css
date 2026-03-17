@@ -1,0 +1,133 @@
+/* Hotels Styles */
+
+.hotels-container {
+  padding: 24px;
+}
+
+/* Page Header */
+.hotels-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.hotels-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.hotels-title {
+  font-weight: 700;
+}
+
+.hotels-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Card Styles */
+.hotels-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Search Field */
+.hotels-search {
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+
+.hotels-search-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Table Styles */
+.hotels-table-container {
+  margin-left: 0;
+}
+
+.hotels-table {
+  width: 100%;
+  margin-left: 0;
+}
+
+.hotels-table-cell-header {
+  font-weight: 700;
+  text-align: left;
+}
+
+.hotels-table-cell {
+  text-align: left;
+}
+
+.hotels-table-cell-name {
+  text-align: left;
+}
+
+.hotels-table-cell-location {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.hotels-location-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.hotels-table-cell-price {
+  text-align: left;
+  font-weight: 700;
+}
+
+.hotels-table-cell-amenities {
+  text-align: left;
+}
+
+.hotels-amenities-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.hotels-table-cell-actions {
+  text-align: left;
+}
+
+/* Status Chip */
+.hotels-status-chip {
+  font-weight: 700;
+}
+
+.hotels-status-active {
+  background-color: #a7f3d0;
+  color: #0a6b62;
+}
+
+.hotels-status-inactive {
+  background-color: #e8ebf5;
+  color: #718096;
+}
+
+/* Dialog Styles */
+.hotels-dialog-paper {
+  border-radius: 16px;
+}
+
+.hotels-dialog-title {
+  font-weight: 700;
+}
+
+.hotels-dialog-actions {
+  padding: 16px;
+}
+
+/* Rating Text */
+.hotels-rating-caption {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Address Text */
+.hotels-address-text {
+  color: rgba(0, 0, 0, 0.6);
+}

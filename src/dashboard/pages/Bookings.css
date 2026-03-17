@@ -1,0 +1,122 @@
+/* Bookings Styles */
+
+.bookings-container {
+  padding: 24px;
+}
+
+/* Page Header */
+.bookings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.bookings-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookings-title {
+  font-weight: 700;
+}
+
+.bookings-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Card Styles */
+.bookings-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Search Field */
+.bookings-search {
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+
+.bookings-search-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Table Styles */
+.bookings-table-container {
+  margin-left: 0;
+}
+
+.bookings-table {
+  width: 100%;
+  margin-left: 0;
+}
+
+.bookings-table-cell-header {
+  font-weight: 700;
+  text-align: left;
+}
+
+.bookings-table-cell {
+  text-align: left;
+}
+
+.bookings-table-cell-customer {
+  text-align: left;
+}
+
+.bookings-customer-name {
+  font-weight: 600;
+}
+
+.bookings-customer-email {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.bookings-table-cell-amount {
+  text-align: left;
+  font-weight: 700;
+}
+
+.bookings-table-cell-actions {
+  text-align: left;
+}
+
+/* Status Chip */
+.bookings-status-chip {
+  font-weight: 700;
+}
+
+.bookings-status-confirmed {
+  background-color: #a7f3d0;
+  color: #0a6b62;
+}
+
+.bookings-status-canceled {
+  background-color: #fed7e2;
+  color: #c4183c;
+}
+
+.bookings-status-completed {
+  background-color: #bee3f8;
+  color: #0088cc;
+}
+
+.bookings-status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* Dialog Styles */
+.bookings-dialog-paper {
+  border-radius: 16px;
+}
+
+.bookings-dialog-title {
+  font-weight: 700;
+}
+
+.bookings-dialog-actions {
+  padding: 16px;
+}

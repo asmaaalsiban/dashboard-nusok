@@ -1,0 +1,170 @@
+/* Users Styles */
+
+.users-container {
+  padding: 24px;
+}
+
+/* Page Header */
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.users-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.users-title {
+  font-weight: 700;
+}
+
+.users-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Card Styles */
+.users-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Search Field */
+.users-search {
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+
+.users-search-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Table Styles */
+.users-table-container {
+  margin-left: 0;
+}
+
+.users-table {
+  width: 100%;
+  margin-left: 0;
+}
+
+.users-table-cell-header {
+  font-weight: 700;
+  text-align: left;
+}
+
+.users-table-cell {
+  text-align: left;
+}
+
+.users-table-cell-name {
+  text-align: left;
+}
+
+.users-name-box {
+  display: flex;
+  align-items: center;
+}
+
+.users-avatar {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.users-table-cell-contact {
+  text-align: left;
+}
+
+.users-contact-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.users-table-cell-country {
+  text-align: left;
+}
+
+.users-country-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.users-country-flag {
+  font-size: 24px;
+}
+
+.users-table-cell-city {
+  text-align: left;
+}
+
+.users-table-cell-role {
+  text-align: left;
+}
+
+.users-table-cell-status {
+  text-align: left;
+}
+
+.users-table-cell-bookings {
+  text-align: left;
+  font-weight: 700;
+}
+
+.users-table-cell-actions {
+  text-align: left;
+}
+
+/* Status Chip */
+.users-status-chip {
+  font-weight: 700;
+}
+
+.users-status-active {
+  background-color: #a7f3d0;
+  color: #0a6b62;
+}
+
+.users-status-inactive {
+  background-color: #e8ebf5;
+  color: #718096;
+}
+
+/* Role Chip */
+.users-role-chip {
+  font-weight: 700;
+}
+
+.users-role-admin {
+  background-color: #667eea;
+  color: #ffffff;
+}
+
+.users-role-vendor {
+  background-color: #f093fb;
+  color: #ffffff;
+}
+
+.users-role-customer {
+  background-color: #4facfe;
+  color: #ffffff;
+}
+
+/* Dialog Styles */
+.users-dialog-paper {
+  border-radius: 16px;
+}
+
+.users-dialog-title {
+  font-weight: 700;
+}
+
+.users-dialog-actions {
+  padding: 16px;
+}

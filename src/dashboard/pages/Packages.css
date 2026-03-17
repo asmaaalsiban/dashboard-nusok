@@ -1,0 +1,129 @@
+/* Packages Styles */
+
+.packages-container {
+  padding: 24px;
+}
+
+/* Page Header */
+.packages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.packages-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.packages-title {
+  font-weight: 700;
+}
+
+.packages-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Card Styles */
+.packages-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Search Field */
+.packages-search {
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+
+.packages-search-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Table Styles */
+.packages-table-container {
+  margin-left: 0;
+}
+
+.packages-table {
+  width: 100%;
+  margin-left: 0;
+}
+
+.packages-table-cell-header {
+  font-weight: 700;
+  text-align: left;
+}
+
+.packages-table-cell {
+  text-align: left;
+}
+
+.packages-table-cell-name {
+  text-align: left;
+  font-weight: 700;
+  color: #1976d2;
+}
+
+.packages-table-cell-duration {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.packages-duration-icon {
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.packages-table-cell-price {
+  text-align: left;
+  font-weight: 700;
+}
+
+.packages-table-cell-description {
+  text-align: left;
+}
+
+.packages-description-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.packages-features-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.packages-table-cell-actions {
+  text-align: left;
+}
+
+/* Status Chip */
+.packages-status-chip {
+  font-weight: 700;
+}
+
+.packages-status-active {
+  background-color: #a7f3d0;
+  color: #0a6b62;
+}
+
+.packages-status-inactive {
+  background-color: #e8ebf5;
+  color: #718096;
+}
+
+/* Dialog Styles */
+.packages-dialog-paper {
+  border-radius: 16px;
+}
+
+.packages-dialog-title {
+  font-weight: 700;
+}
+
+.packages-dialog-actions {
+  padding: 16px;
+}

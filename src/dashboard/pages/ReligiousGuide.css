@@ -1,0 +1,266 @@
+/* ReligiousGuide Styles */
+
+.guide-container {
+  padding: 32px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Page Header */
+.guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.guide-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-title {
+  font-weight: 800 !important;
+  color: #1a1a2e !important;
+  font-size: 1.75rem !important;
+}
+
+.guide-subtitle {
+  color: #6b7280 !important;
+  font-size: 1rem !important;
+  margin-top: 4px !important;
+}
+
+.add-guide-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.add-guide-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Filters Card */
+.guide-filters-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  margin-bottom: 24px !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+}
+
+.guide-search {
+  max-width: 100% !important;
+}
+
+.guide-search-icon {
+  margin-left: 8px !important;
+  color: #9ca3af !important;
+}
+
+.guide-category-filter {
+  max-width: 100% !important;
+}
+
+.guide-women-switch {
+  margin-left: 0 !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  background-color: #fdf2f8 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.guide-women-switch:hover {
+  background-color: #fce7f3 !important;
+}
+
+/* Main Card */
+.guide-card {
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden;
+}
+
+/* Table Styles */
+.guide-table-container {
+  margin-left: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.guide-table {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+.guide-table-cell-header {
+  font-weight: 700 !important;
+  color: #6b7280 !important;
+  font-size: 0.875rem !important;
+  padding: 16px 12px !important;
+  background-color: #f8f9fa !important;
+  border-bottom: 2px solid #e9ecef !important;
+}
+
+.guide-table-cell-type {
+  text-align: center !important;
+  padding: 16px 12px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.guide-type-chip {
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+.guide-table-cell-title {
+  text-align: right !important;
+  padding: 16px 12px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.guide-title-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.guide-icon {
+  color: #667eea !important;
+  margin-top: 2px !important;
+}
+
+.guide-item-title {
+  color: #1a1a2e !important;
+  font-size: 1rem !important;
+}
+
+.guide-item-title-en {
+  color: #9ca3af !important;
+  display: block !important;
+  margin-top: 4px !important;
+}
+
+.guide-table-cell {
+  text-align: center !important;
+  padding: 16px 12px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.guide-table-cell-actions {
+  text-align: center !important;
+  padding: 16px 12px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* Table Row Hover */
+.MuiTableRow-root:hover {
+  background-color: #f8f9fa !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Category Chip */
+.guide-category-chip {
+  background-color: #e0e7ff !important;
+  color: #4338ca !important;
+  font-weight: 600 !important;
+}
+
+/* Women Chip */
+.guide-women-chip {
+  background-color: #fce7f3 !important;
+  color: #db2777 !important;
+  font-weight: 600 !important;
+}
+
+/* Importance Chip */
+.guide-importance-chip {
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  padding: 4px 10px !important;
+  border-radius: 12px !important;
+}
+
+/* Type Filter */
+.guide-type-filter {
+  max-width: 100% !important;
+}
+
+/* Status Chips */
+.guide-status-chip {
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+}
+
+.guide-status-active {
+  background-color: #d1fae5 !important;
+  color: #059669 !important;
+}
+
+.guide-status-inactive {
+  background-color: #e8ebf5 !important;
+  color: #718096 !important;
+}
+
+/* Dialog Styles */
+.guide-dialog-paper {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.guide-dialog-title {
+  font-weight: 700 !important;
+  padding: 24px !important;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  color: #1a1a2e !important;
+}
+
+.guide-dialog-actions {
+  padding: 20px 24px !important;
+  background-color: #f8f9fa !important;
+  border-top: 1px solid #e0e0e0 !important;
+}
+
+.guide-dialog-switch {
+  margin: 8px 0 !important;
+  padding: 12px !important;
+  border-radius: 10px !important;
+  background-color: #fdf2f8 !important;
+  width: 100% !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .guide-container {
+    padding: 20px 16px;
+  }
+  
+  .guide-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .guide-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .add-guide-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  .guide-women-switch {
+    width: 100% !important;
+  }
+}
