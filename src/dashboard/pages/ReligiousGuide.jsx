@@ -203,16 +203,6 @@ const ReligiousGuide = () => {
     }
   };
 
-  const getStatusChip = (status) => {
-    const config = {
-      active: { color: "#d1fae5", text: "#059669", label: "نشط" },
-      inactive: { color: "#e8ebf5", text: "#718096", label: "غير نشط" },
-    };
-    const c = config[status] || config.active;
-    const chipClass = `guide-status-chip guide-status-${status}`;
-    return <Chip label={c.label} size="small" className={chipClass} />;
-  };
-
   const getTypeChip = (type) => {
     const config = {
       instruction: { icon: <InfoIcon />, label: "تعليمات", color: "#dbeafe", text: "#1d4ed8" },
@@ -274,7 +264,6 @@ const ReligiousGuide = () => {
     isForWomen: Yup.boolean(),
     womenNote: Yup.string(),
     importance: Yup.string().required("مطلوب"),
-    status: Yup.string().required("مطلوب"),
   });
 
   const initialValues = editingItem || {
@@ -390,9 +379,9 @@ const ReligiousGuide = () => {
                   <TableCell className="guide-table-cell-header">النوع</TableCell>
                   <TableCell className="guide-table-cell-header">العنوان</TableCell>
                   <TableCell className="guide-table-cell-header">القسم</TableCell>
+                  <TableCell className="guide-table-cell-header">الوصف</TableCell>
                   <TableCell className="guide-table-cell-header">الأهمية</TableCell>
                   <TableCell className="guide-table-cell-header">للنساء</TableCell>
-                  <TableCell className="guide-table-cell-header">الحالة</TableCell>
                   <TableCell className="guide-table-cell-header">الإجراءات</TableCell>
                 </TableRow>
               </TableHead>
@@ -416,6 +405,9 @@ const ReligiousGuide = () => {
                     <TableCell className="guide-table-cell">
                       <Chip label={getCategoryLabel(item.category)} size="small" className="guide-category-chip" />
                     </TableCell>
+                    <TableCell className="guide-table-cell-description">
+                      <Typography variant="body2" className="guide-description-text">{item.description}</Typography>
+                    </TableCell>
                     <TableCell className="guide-table-cell">
                       {getImportanceChip(item.importance)}
                     </TableCell>
@@ -431,7 +423,6 @@ const ReligiousGuide = () => {
                         <Typography variant="caption" color="text.secondary">عام</Typography>
                       )}
                     </TableCell>
-                    <TableCell className="guide-table-cell">{getStatusChip(item.status)}</TableCell>
                     <TableCell className="guide-table-cell-actions">
                       <IconButton size="small" color="primary" onClick={() => handleOpenDialog(item)}>
                         <EditIcon fontSize="small" />

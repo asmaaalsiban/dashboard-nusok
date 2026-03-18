@@ -15,7 +15,11 @@ import {
   InputAdornment,
   IconButton,
 } from "@mui/material";
-import { Visibility, VisibilityOff, Login as LoginIcon } from "@mui/icons-material";
+import {
+  Visibility,
+  VisibilityOff,
+  Login as LoginIcon,
+} from "@mui/icons-material";
 import { useAuth } from "../context/AuthContext";
 
 const LoginSchema = Yup.object().shape({
@@ -55,16 +59,14 @@ const Login = () => {
         justifyContent: "center",
         background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
         padding: 2,
-      }}
-    >
+      }}>
       <Card
         sx={{
           width: "100%",
           maxWidth: 420,
           borderRadius: 4,
           boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
-        }}
-      >
+        }}>
         <CardContent sx={{ padding: 4 }}>
           {/* Header */}
           <Box sx={{ textAlign: "center", marginBottom: 3 }}>
@@ -79,21 +81,20 @@ const Login = () => {
                 justifyContent: "center",
                 margin: "0 auto 16px",
                 boxShadow: "0 8px 20px rgba(102, 126, 234, 0.4)",
-              }}
-            >
+              }}>
               <LoginIcon sx={{ fontSize: 36, color: "white" }} />
             </Box>
-            <Typography variant="h4" fontWeight={700}>
+            <Typography variant='h4' fontWeight={700}>
               تسجيل دخول المسؤول
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+            <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
               سجل الدخول للوصول إلى لوحة التحكم
             </Typography>
           </Box>
 
           {/* Error Alert */}
           {error && (
-            <Alert severity="error" sx={{ marginBottom: 2 }}>
+            <Alert severity='error' sx={{ marginBottom: 2 }}>
               {error}
             </Alert>
           )}
@@ -102,35 +103,33 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={LoginSchema}
-            onSubmit={handleLogin}
-          >
+            onSubmit={handleLogin}>
             {({ errors, touched, isSubmitting }) => (
               <Form>
                 {/* Email Field */}
-                <Field name="email">
+                <Field name='email'>
                   {({ field, meta }) => (
                     <TextField
                       {...field}
                       fullWidth
-                      label="البريد الإلكتروني"
-                      type="email"
-                      placeholder="admin@nusok.com"
+                      label='البريد الإلكتروني'
+                      type='email'
+                      placeholder='admin@nusok.com'
                       error={touched.email && Boolean(errors.email)}
                       helperText={touched.email && errors.email}
                       sx={{ marginBottom: 2 }}
                       InputProps={{
                         startAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment position='start'>
                             <svg
-                              width="20"
-                              height="20"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            >
-                              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                              <polyline points="22,6 12,13 2,6" />
+                              width='20'
+                              height='20'
+                              viewBox='0 0 24 24'
+                              fill='none'
+                              stroke='currentColor'
+                              strokeWidth='2'>
+                              <path d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' />
+                              <polyline points='22,6 12,13 2,6' />
                             </svg>
                           </InputAdornment>
                         ),
@@ -140,44 +139,49 @@ const Login = () => {
                 </Field>
 
                 {/* Password Field */}
-                <Field name="password">
+                <Field name='password'>
                   {({ field, meta }) => (
                     <TextField
                       {...field}
                       fullWidth
-                      label="كلمة المرور"
+                      label='كلمة المرور'
                       type={showPassword ? "text" : "password"}
-                      placeholder="أدخل كلمة المرور"
+                      placeholder='أدخل كلمة المرور'
                       error={touched.password && Boolean(errors.password)}
                       helperText={touched.password && errors.password}
                       sx={{ marginBottom: 2 }}
                       InputProps={{
                         startAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment position='start'>
                             <svg
-                              width="20"
-                              height="20"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            >
-                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                              width='20'
+                              height='20'
+                              viewBox='0 0 24 24'
+                              fill='none'
+                              stroke='currentColor'
+                              strokeWidth='2'>
+                              <rect
+                                x='3'
+                                y='11'
+                                width='18'
+                                height='11'
+                                rx='2'
+                                ry='2'
+                              />
+                              <path d='M7 11V7a5 5 0 0 1 10 0v4' />
                             </svg>
                           </InputAdornment>
                         ),
                         endAdornment: (
-                          <InputAdornment position="end">
+                          <InputAdornment position='end'>
                             <IconButton
                               onClick={() => setShowPassword(!showPassword)}
-                              edge="end"
-                              size="small"
-                            >
+                              edge='end'
+                              size='small'>
                               {showPassword ? (
-                                <VisibilityOff fontSize="small" />
+                                <VisibilityOff fontSize='small' />
                               ) : (
-                                <Visibility fontSize="small" />
+                                <Visibility fontSize='small' />
                               )}
                             </IconButton>
                           </InputAdornment>
@@ -189,16 +193,17 @@ const Login = () => {
 
                 {/* Submit Button */}
                 <Button
-                  type="submit"
-                  variant="contained"
+                  type='submit'
+                  variant='contained'
                   fullWidth
-                  size="large"
+                  size='large'
                   disabled={isSubmitting}
                   sx={{
                     padding: "14px",
                     fontSize: "1rem",
                     fontWeight: 700,
-                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    background:
+                      "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                     boxShadow: "0 8px 20px rgba(102, 126, 234, 0.4)",
                     "&:hover": {
                       boxShadow: "0 12px 28px rgba(102, 126, 234, 0.5)",
@@ -208,8 +213,7 @@ const Login = () => {
                       opacity: 0.7,
                       transform: "none",
                     },
-                  }}
-                >
+                  }}>
                   {isSubmitting ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
                 </Button>
               </Form>
@@ -217,7 +221,7 @@ const Login = () => {
           </Formik>
 
           {/* Demo Credentials */}
-          <Box
+          {/* <Box
             sx={{
               marginTop: 3,
               padding: 2,
@@ -235,7 +239,7 @@ const Login = () => {
             <Typography variant="caption" color="text.secondary" display="block">
               كلمة المرور: admin123
             </Typography>
-          </Box>
+          </Box> */}
         </CardContent>
       </Card>
     </Box>

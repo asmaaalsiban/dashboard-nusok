@@ -70,12 +70,12 @@ const SAUDI_CITIES = [
 
 const Users = () => {
   const [users, setUsers] = useState([
-    { id: 1, name: "أحمد حسن", email: "ahmed@email.com", phone: "+20 123 456 7890", role: "customer", status: "active", joined: "2024-01-15", bookings: 5, countryId: 2, countryName: "مصر", cityId: 1, cityName: "مكة المكرمة" },
-    { id: 2, name: "فاطمة علي", email: "fatima@email.com", phone: "+20 111 222 3333", role: "customer", status: "active", joined: "2024-02-20", bookings: 3, countryId: 2, countryName: "مصر", cityId: 2, cityName: "المدينة المنورة" },
-    { id: 3, name: "محمد عمر", email: "mohammed@email.com", phone: "+20 100 999 8888", role: "vendor", status: "active", joined: "2024-01-10", bookings: 0, countryId: 1, countryName: "المملكة العربية السعودية", cityId: 3, cityName: "جدة" },
-    { id: 4, name: "سارة إبراهيم", email: "sarah@email.com", phone: "+20 150 777 6666", role: "customer", status: "inactive", joined: "2024-03-05", bookings: 2, countryId: 4, countryName: "الكويت", cityId: 1, cityName: "مكة المكرمة" },
-    { id: 5, name: "خالد يوسف", email: "khaled@email.com", phone: "+20 120 555 4444", role: "customer", status: "active", joined: "2024-02-28", bookings: 4, countryId: 5, countryName: "قطر", cityId: 2, cityName: "المدينة المنورة" },
-    { id: 6, name: "نور خليل", email: "nour@email.com", phone: "+20 180 333 2222", role: "admin", status: "active", joined: "2024-01-01", bookings: 0, countryId: 1, countryName: "المملكة العربية السعودية", cityId: 4, cityName: "الرياض" },
+    { id: 1, name: "أحمد حسن", email: "ahmed@email.com", phone: "+20 123 456 7890", role: "customer", tripRating: 4.5, joined: "2024-01-15", bookings: 5, countryId: 2, countryName: "مصر", cityId: 1, cityName: "مكة المكرمة" },
+    { id: 2, name: "فاطمة علي", email: "fatima@email.com", phone: "+20 111 222 3333", role: "customer", tripRating: 5.0, joined: "2024-02-20", bookings: 3, countryId: 2, countryName: "مصر", cityId: 2, cityName: "المدينة المنورة" },
+    { id: 3, name: "محمد عمر", email: "mohammed@email.com", phone: "+20 100 999 8888", role: "vendor", tripRating: 0, joined: "2024-01-10", bookings: 0, countryId: 1, countryName: "المملكة العربية السعودية", cityId: 3, cityName: "جدة" },
+    { id: 4, name: "سارة إبراهيم", email: "sarah@email.com", phone: "+20 150 777 6666", role: "customer", tripRating: 3.5, joined: "2024-03-05", bookings: 2, countryId: 4, countryName: "الكويت", cityId: 1, cityName: "مكة المكرمة" },
+    { id: 5, name: "خالد يوسف", email: "khaled@email.com", phone: "+20 120 555 4444", role: "customer", tripRating: 4.0, joined: "2024-02-28", bookings: 4, countryId: 5, countryName: "قطر", cityId: 2, cityName: "المدينة المنورة" },
+    { id: 6, name: "نور خليل", email: "nour@email.com", phone: "+20 180 333 2222", role: "admin", tripRating: 0, joined: "2024-01-01", bookings: 0, countryId: 1, countryName: "المملكة العربية السعودية", cityId: 4, cityName: "الرياض" },
   ]);
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -119,14 +119,20 @@ const Users = () => {
     return <Chip label={c.label} size="small" className={chipClass} />;
   };
 
-  const getStatusChip = (status) => {
-    const config = {
-      active: { color: "#a7f3d0", text: "#0a6b62", label: "نشط" },
-      inactive: { color: "#e8ebf5", text: "#718096", label: "غير نشط" },
-    };
-    const c = config[status] || config.active;
-    const chipClass = `users-status-chip users-status-${status}`;
-    return <Chip label={c.label} size="small" className={chipClass} />;
+  const getStatusChip = (rating) => {
+    if (rating === 0) {
+      return <Chip label="—" size="small" className="users-rating-chip users-rating-none" />;
+    }
+    const color = rating >= 4.5 ? "#a7f3d0" : rating >= 3.5 ? "#fef3c7" : "#fed7d7";
+    const textColor = rating >= 4.5 ? "#0a6b62" : rating >= 3.5 ? "#975a16" : "#c53030";
+    return (
+      <Chip 
+        label={`${rating.toFixed(1)} ⭐`} 
+        size="small" 
+        className="users-rating-chip"
+        style={{ backgroundColor: color, color: textColor }}
+      />
+    );
   };
 
   const filteredUsers = users.filter(u =>
@@ -140,7 +146,7 @@ const Users = () => {
     email: Yup.string().email("بريد إلكتروني غير صالح").required("مطلوب"),
     phone: Yup.string().required("مطلوب"),
     role: Yup.string().required("مطلوب"),
-    status: Yup.string().required("مطلوب"),
+    tripRating: Yup.number().min(0).max(5).required("مطلوب"),
     countryId: Yup.number().required("مطلوب"),
     cityId: Yup.number().required("مطلوب"),
   });
@@ -150,7 +156,7 @@ const Users = () => {
     email: "",
     phone: "",
     role: "customer",
-    status: "active",
+    tripRating: 0,
     countryId: "",
     cityId: "",
   };
@@ -186,7 +192,7 @@ const Users = () => {
                   <TableCell className="users-table-cell-header">الدولة</TableCell>
                   <TableCell className="users-table-cell-header">المدينة</TableCell>
                   <TableCell className="users-table-cell-header">الدور</TableCell>
-                  <TableCell className="users-table-cell-header">الحالة</TableCell>
+                  <TableCell className="users-table-cell-header">تقييم الرحلات</TableCell>
                   <TableCell className="users-table-cell-header">تاريخ الانضمام</TableCell>
                   <TableCell className="users-table-cell-header">الحجوزات</TableCell>
                   <TableCell className="users-table-cell-header">الإجراءات</TableCell>
@@ -219,7 +225,7 @@ const Users = () => {
                     </TableCell>
                     <TableCell className="users-table-cell-city">{user.cityName || "-"}</TableCell>
                     <TableCell className="users-table-cell-role">{getRoleChip(user.role)}</TableCell>
-                    <TableCell className="users-table-cell-status">{getStatusChip(user.status)}</TableCell>
+                    <TableCell className="users-table-cell-status">{getStatusChip(user.tripRating)}</TableCell>
                     <TableCell className="users-table-cell">{user.joined}</TableCell>
                     <TableCell className="users-table-cell-bookings">{user.bookings}</TableCell>
                     <TableCell className="users-table-cell-actions">
@@ -317,12 +323,17 @@ const Users = () => {
                     </Field>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Field name="status">
+                    <Field name="tripRating">
                       {({ field }) => (
-                        <TextField {...field} select fullWidth label="الحالة" SelectProps={{ native: true }} error={touched.status && Boolean(errors.status)} helperText={touched.status && errors.status}>
-                          <option value="active">نشط</option>
-                          <option value="inactive">غير نشط</option>
-                        </TextField>
+                        <TextField 
+                          {...field} 
+                          fullWidth 
+                          label="تقييم الرحلات" 
+                          type="number" 
+                          InputProps={{ inputProps: { min: 0, max: 5, step: 0.1 } }}
+                          error={touched.tripRating && Boolean(errors.tripRating)} 
+                          helperText={touched.tripRating && errors.tripRating} 
+                        />
                       )}
                     </Field>
                   </Grid>

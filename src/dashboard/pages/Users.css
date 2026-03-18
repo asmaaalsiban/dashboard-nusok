@@ -121,17 +121,12 @@
   text-align: left;
 }
 
-/* Status Chip */
-.users-status-chip {
+/* Rating Chip */
+.users-rating-chip {
   font-weight: 700;
 }
 
-.users-status-active {
-  background-color: #a7f3d0;
-  color: #0a6b62;
-}
-
-.users-status-inactive {
+.users-rating-none {
   background-color: #e8ebf5;
   color: #718096;
 }
