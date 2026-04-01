@@ -24,7 +24,7 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
-import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon, Search as SearchIcon } from "@mui/icons-material";
+import { Edit as EditIcon, Delete as DeleteIcon, Search as SearchIcon } from "@mui/icons-material";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -116,9 +116,6 @@ const Bookings = () => {
           <Typography variant="h4" className="bookings-title">إدارة الحجوزات</Typography>
           <Typography variant="body2" className="bookings-subtitle">إدارة جميع حجوزات الفنادق</Typography>
         </Box>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenDialog()}>
-          إضافة حجز
-        </Button>
       </Box>
 
       <Card className="bookings-card">
@@ -140,7 +137,7 @@ const Bookings = () => {
                   <TableCell className="bookings-table-cell-header">الباقة</TableCell>
                   <TableCell className="bookings-table-cell-header">تسجيل الوصول</TableCell>
                   <TableCell className="bookings-table-cell-header">تسجيل المغادرة</TableCell>
-                  <TableCell className="bookings-table-cell-header">الضيوف</TableCell>
+                  <TableCell className="bookings-table-cell-header">أفراد العائلة</TableCell>
                   <TableCell className="bookings-table-cell-header">المبلغ</TableCell>
                   <TableCell className="bookings-table-cell-header">الحالة</TableCell>
                   <TableCell className="bookings-table-cell-header">الإجراءات</TableCell>
@@ -229,7 +226,7 @@ const Bookings = () => {
                   <Grid item xs={12} sm={6}>
                     <Field name="guests">
                       {({ field }) => (
-                        <TextField {...field} fullWidth label="عدد الضيوف" type="number" error={touched.guests && Boolean(errors.guests)} helperText={touched.guests && errors.guests} />
+                        <TextField {...field} fullWidth label="عدد أفراد العائلة" type="number" error={touched.guests && Boolean(errors.guests)} helperText={touched.guests && errors.guests} />
                       )}
                     </Field>
                   </Grid>

@@ -62,6 +62,35 @@
   text-align: left;
 }
 
+.packages-table-cell-image {
+  text-align: left;
+}
+
+.packages-image-box {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.packages-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.packages-image-box-placeholder {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
 .packages-table-cell-name {
   text-align: left;
   font-weight: 700;
@@ -82,6 +111,11 @@
 .packages-table-cell-price {
   text-align: left;
   font-weight: 700;
+}
+
+.packages-table-cell-hotels {
+  text-align: left;
+  min-width: 200px;
 }
 
 .packages-table-cell-description {

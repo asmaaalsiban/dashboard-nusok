@@ -30,9 +30,11 @@ import {
   Delete as DeleteIcon,
   Search as SearchIcon,
   Today as DurationIcon,
+  Image as ImageIcon,
 } from "@mui/icons-material";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import HotelsSelect from "../components/HotelsSelect";
 
 const Packages = () => {
   const [packages, setPackages] = useState([
@@ -41,67 +43,101 @@ const Packages = () => {
       name: "اقتصادية",
       duration: "3 أيام / 2 ليلة",
       price: 400,
-      hotels: 5,
+      hotelId: 1,
       description: "باقة أساسية للمسافرين بميزانية محدودة",
       features: "فندق، إفطار، نقل المطار",
       status: "active",
+      transportation: "حافلة مكيفة",
+      services: "إفطار يومي، نقل المطار",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop",
     },
     {
       id: 2,
       name: "قياسية",
       duration: "5 أيام / 4 ليالي",
       price: 800,
-      hotels: 10,
+      hotelId: 2,
       description: "مثالية للعطلات القصيرة",
       features: "فندق، إفطار، جولة بالمدينة، نقل المطار",
       status: "active",
+      transportation: "حافلة فاخرة",
+      services: "إفطار، جولة بالمدينة، نقل المطار",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&h=300&fit=crop",
     },
     {
       id: 3,
       name: "ممتازة",
       duration: "7 أيام / 6 ليالي",
       price: 1500,
-      hotels: 15,
+      hotelId: 3,
       description: "اختبر الفخامة والراحة",
       features: "فندق 5 نجوم، جميع الوجبات، جولات خاصة، سبا",
       status: "active",
+      transportation: "سيارة خاصة",
+      services: "جميع الوجبات، جولات خاصة، سبا",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=300&fit=crop",
     },
     {
       id: 4,
       name: "فاخرة",
       duration: "10 أيام / 9 ليالي",
       price: 2500,
-      hotels: 20,
+      hotelId: 4,
       description: "تجربة فاخرة نهائية",
       features: "فندق 5 نجوم+، جميع الوجبات، جولات VIP، سبا، هليكوبتر",
       status: "active",
+      transportation: "هليكوبتر، سيارة فاخرة",
+      services: "جميع الوجبات، جولات VIP، سبا، هليكوبتر",
+      image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop",
     },
+  ]);
+
+  const [hotels] = useState([
+    { id: 1, name: "فندق جراند", location: "القاهرة" },
+    { id: 2, name: "منتجع البحر", location: "الإسكندرية" },
+    { id: 3, name: "نزل الجبل", location: "سانت كاترين" },
+    { id: 4, name: "نزل المدينة", location: "الجيزة" },
+    { id: 5, name: "مخيم الصحراء", location: "سيوة" },
   ]);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleOpenDialog = (item = null) => {
     setEditingItem(item);
+    setImagePreview(item?.image || null);
     setOpenDialog(true);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setEditingItem(null);
+    setImagePreview(null);
   };
 
   const handleSave = (values, actions) => {
     if (editingItem) {
       setPackages(
-        packages.map((p) => (p.id === editingItem.id ? { ...p, ...values } : p))
+        packages.map((p) => (p.id === editingItem.id ? { ...p, ...values, image: imagePreview } : p))
       );
     } else {
-      setPackages([...packages, { ...values, id: Date.now() }]);
+      setPackages([...packages, { ...values, id: Date.now(), image: imagePreview }]);
     }
     actions.setSubmitting(false);
     handleCloseDialog();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleDelete = (id) => {
@@ -128,20 +164,24 @@ const Packages = () => {
     name: Yup.string().required("مطلوب"),
     duration: Yup.string().required("مطلوب"),
     price: Yup.number().min(0).required("مطلوب"),
-    hotels: Yup.number().min(1).required("مطلوب"),
+    hotelId: Yup.number().required("مطلوب"),
     description: Yup.string().required("مطلوب"),
     features: Yup.string().required("مطلوب"),
     status: Yup.string().required("مطلوب"),
+    transportation: Yup.string().required("مطلوب"),
+    services: Yup.string().required("مطلوب"),
   });
 
   const initialValues = editingItem || {
     name: "",
     duration: "",
     price: 0,
-    hotels: 0,
+    hotelId: "",
     description: "",
     features: "",
     status: "active",
+    transportation: "",
+    services: "",
   };
 
   return (
@@ -180,6 +220,9 @@ const Packages = () => {
               <TableHead>
                 <TableRow>
                   <TableCell className='packages-table-cell-header'>
+                    الصورة
+                  </TableCell>
+                  <TableCell className='packages-table-cell-header'>
                     اسم الباقة
                   </TableCell>
                   <TableCell className='packages-table-cell-header'>
@@ -189,10 +232,16 @@ const Packages = () => {
                     السعر
                   </TableCell>
                   <TableCell className='packages-table-cell-header'>
-                    الفنادق
+                    الفنادق المختارة
                   </TableCell>
                   <TableCell className='packages-table-cell-header'>
                     الوصف
+                  </TableCell>
+                  <TableCell className='packages-table-cell-header'>
+                    النقل
+                  </TableCell>
+                  <TableCell className='packages-table-cell-header'>
+                    الخدمات
                   </TableCell>
                   <TableCell className='packages-table-cell-header'>
                     الحالة
@@ -205,6 +254,43 @@ const Packages = () => {
               <TableBody>
                 {filteredPackages.map((pkg) => (
                   <TableRow key={pkg.id} hover>
+                    <TableCell className='packages-table-cell-image'>
+                      {pkg.image ? (
+                        <Box
+                          className="packages-image-box"
+                          sx={{
+                            width: 80,
+                            height: 60,
+                            borderRadius: 1,
+                            overflow: 'hidden',
+                            boxShadow: 1
+                          }}
+                        >
+                          <img
+                            src={pkg.image}
+                            alt={pkg.name}
+                            className="packages-table-image"
+                            loading="lazy"
+                          />
+                        </Box>
+                      ) : (
+                        <Box
+                          className="packages-image-box-placeholder"
+                          sx={{
+                            width: 80,
+                            height: 60,
+                            borderRadius: 1,
+                            bgcolor: '#e0e0e0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '24px'
+                          }}
+                        >
+                          📦
+                        </Box>
+                      )}
+                    </TableCell>
                     <TableCell className='packages-table-cell-name'>
                       <Typography fontWeight={700} color='primary.main'>
                         {pkg.name}
@@ -222,8 +308,13 @@ const Packages = () => {
                     <TableCell className='packages-table-cell-price'>
                       ${pkg.price}
                     </TableCell>
-                    <TableCell className='packages-table-cell'>
-                      {pkg.hotels}
+                    <TableCell className='packages-table-cell-hotels'>
+                      {(() => {
+                        const hotel = hotels.find(h => h.id === pkg.hotelId);
+                        return hotel ? (
+                          <Chip label={hotel.name} size="small" variant="outlined" />
+                        ) : null;
+                      })()}
                     </TableCell>
                     <TableCell className='packages-table-cell-description'>
                       <Typography variant='body2'>{pkg.description}</Typography>
@@ -232,6 +323,14 @@ const Packages = () => {
                         className='packages-features-text'>
                         {pkg.features}
                       </Typography>
+                    </TableCell>
+                    <TableCell className='packages-table-cell-transportation'>
+                      <Typography variant='body2'>
+                        {pkg.transportation}
+                      </Typography>
+                    </TableCell>
+                    <TableCell className='packages-table-cell-services'>
+                      <Typography variant='body2'>{pkg.services}</Typography>
                     </TableCell>
                     <TableCell className='packages-table-cell'>
                       {getStatusChip(pkg.status)}
@@ -306,6 +405,56 @@ const Packages = () => {
                       )}
                     </Field>
                   </Grid>
+                  <Grid item xs={12} display="flex" justifyContent="center">
+                    <Box sx={{ position: "relative" }}>
+                      {imagePreview ? (
+                        <Box
+                          sx={{
+                            width: 150,
+                            height: 120,
+                            borderRadius: 2,
+                            overflow: 'hidden',
+                            boxShadow: 2,
+                            mx: 'auto'
+                          }}
+                        >
+                          <img
+                            src={imagePreview}
+                            alt="Package preview"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          />
+                        </Box>
+                      ) : (
+                        <Box
+                          sx={{
+                            width: 150,
+                            height: 120,
+                            borderRadius: 2,
+                            bgcolor: '#e0e0e0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '48px',
+                            mx: 'auto'
+                          }}
+                        >
+                          📦
+                        </Box>
+                      )}
+                      <input
+                        accept="image/*"
+                        type="file"
+                        id="package-image-upload"
+                        onChange={handleImageChange}
+                        style={{ display: "none" }}
+                      />
+                      <label htmlFor="package-image-upload">
+                        <Button variant="outlined" component="span" size="small" sx={{ mt: 1 }}>
+                          رفع صورة
+                        </Button>
+                      </label>
+                    </Box>
+                  </Grid>
                   <Grid item xs={12}>
                     <Field name='duration'>
                       {({ field }) => (
@@ -335,15 +484,13 @@ const Packages = () => {
                     </Field>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Field name='hotels'>
-                      {({ field }) => (
-                        <TextField
-                          {...field}
-                          fullWidth
-                          label='الفنادق المتاحة'
-                          type='number'
-                          error={touched.hotels && Boolean(errors.hotels)}
-                          helperText={touched.hotels && errors.hotels}
+                    <Field name='hotelIds'>
+                      {({ field, form }) => (
+                        <HotelsSelect
+                          field={field}
+                          form={form}
+                          hotels={hotels}
+                          label="الفنادق"
                         />
                       )}
                     </Field>
@@ -375,6 +522,39 @@ const Packages = () => {
                           placeholder='فندق، إفطار، جولات...'
                           error={touched.features && Boolean(errors.features)}
                           helperText={touched.features && errors.features}
+                        />
+                      )}
+                    </Field>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field name='transportation'>
+                      {({ field }) => (
+                        <TextField
+                          {...field}
+                          fullWidth
+                          label='وسائل النقل'
+                          placeholder='حافلة، سيارة خاصة...'
+                          error={
+                            touched.transportation &&
+                            Boolean(errors.transportation)
+                          }
+                          helperText={
+                            touched.transportation && errors.transportation
+                          }
+                        />
+                      )}
+                    </Field>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field name='services'>
+                      {({ field }) => (
+                        <TextField
+                          {...field}
+                          fullWidth
+                          label='الخدمات'
+                          placeholder='إفطار، جولات، سبا...'
+                          error={touched.services && Boolean(errors.services)}
+                          helperText={touched.services && errors.services}
                         />
                       )}
                     </Field>
