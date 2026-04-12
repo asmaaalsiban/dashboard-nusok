@@ -37,8 +37,12 @@ import {
   ChevronRight as ChevronRightIcon,
   AutoStories as GuideIcon,
 } from "@mui/icons-material";
-
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import LanguageIcon from "@mui/icons-material/Language";
 const DRAWER_WIDTH = 280;
+import LocalAirportIcon from "@mui/icons-material/LocalAirport";
+import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
+import AddCommentIcon from "@mui/icons-material/AddComment";
 
 const DashboardLayout = () => {
   // const theme = useTheme();
@@ -71,8 +75,19 @@ const DashboardLayout = () => {
     { text: "المستخدمين", icon: <PeopleIcon />, path: "/dashboard/users" },
     { text: "الفنادق", icon: <HotelIcon />, path: "/dashboard/hotels" },
     { text: "الباقات", icon: <AssessmentIcon />, path: "/dashboard/packages" },
-    { text: "الدليل الشرعي", icon: <GuideIcon />, path: "/dashboard/religious-guide" },
-    { text: "الإعدادات", icon: <SettingsIcon />, path: "/dashboard/settings" },
+    { text: "المدن", icon: <LocationCityIcon />, path: "/dashboard/cities" },
+    { text: "الرحلات", icon: <LocalAirportIcon />, path: "/dashboard/trips" },
+    {
+      text: "وسائل النقل",
+      icon: <AirportShuttleIcon />,
+      path: "/dashboard/transport-services",
+    },
+    {
+      text: "الدليل الشرعي",
+      icon: <GuideIcon />,
+      path: "/dashboard/religious-guide",
+    },
+    { text: "المراجعات", icon: <AddCommentIcon />, path: "/dashboard/reviews" },
   ];
 
   const drawer = (

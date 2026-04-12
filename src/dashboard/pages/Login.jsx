@@ -20,7 +20,7 @@ import {
   VisibilityOff,
   Login as LoginIcon,
 } from "@mui/icons-material";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -39,7 +39,6 @@ const Login = () => {
 
   const handleLogin = async (values, { setSubmitting }) => {
     setError("");
-
     try {
       await login(values.email, values.password);
       navigate("/dashboard", { replace: true });
@@ -108,13 +107,13 @@ const Login = () => {
               <Form>
                 {/* Email Field */}
                 <Field name='email'>
-                  {({ field, meta }) => (
+                  {({ field }) => (
                     <TextField
                       {...field}
                       fullWidth
                       label='البريد الإلكتروني'
                       type='email'
-                      placeholder='admin@nusok.com'
+                      placeholder='admin@gmail.com'
                       error={touched.email && Boolean(errors.email)}
                       helperText={touched.email && errors.email}
                       sx={{ marginBottom: 2 }}
@@ -140,7 +139,7 @@ const Login = () => {
 
                 {/* Password Field */}
                 <Field name='password'>
-                  {({ field, meta }) => (
+                  {({ field }) => (
                     <TextField
                       {...field}
                       fullWidth
